@@ -6,7 +6,7 @@
 /*   By: uisroilo <uisroilo@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:50:28 by uisroilo          #+#    #+#             */
-/*   Updated: 2023/04/18 16:30:17 by uisroilo         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:33:36 by uisroilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,17 @@ int	main() {
 	for (unsigned i=0; i<myvector1.size(); ++i)
 		std::cout << ' ' << myvector1[i];
 	std::cout << '\n';
-}
 
+	  ft::vector<int> myvector12(2);
+
+		myvector12.at(0) = 78;
+		myvector12.at(1) = 16;
+
+		// now front equals 78, and back 16
+
+		myvector12.front() -= myvector12.back();
+
+		std::cout << "myvector.front() is now " << myvector12.front() << '\n';
+
+		return 0;
+}

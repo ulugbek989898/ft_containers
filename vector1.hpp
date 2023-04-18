@@ -6,7 +6,7 @@
 /*   By: uisroilo <uisroilo@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:32:17 by uisroilo          #+#    #+#             */
-/*   Updated: 2023/04/18 16:28:41 by uisroilo         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:32:22 by uisroilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,8 +259,22 @@ namespace ft {
 		const value_type* data() const {
 			return _start;
 		}
-		
 
+		reference front() {
+			return *(this->begin());
+		}
+
+		const_reference front() const {
+			return *(this->begin());
+		}
+		
+		reference back() {
+			return *(this->end() - 1);
+		}
+
+		const_reference back() const {
+			return *(this->end() - 1);
+		}
 
 		// Modifiers:
 		void	clear() {
