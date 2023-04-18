@@ -6,7 +6,7 @@
 /*   By: uisroilo <uisroilo@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:50:28 by uisroilo          #+#    #+#             */
-/*   Updated: 2023/04/18 14:35:58 by uisroilo         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:30:17 by uisroilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,33 @@ int	main() {
 	for (ft::vector<int>::iterator it = v66.begin(); it != v66.end(); ++it) {
 		std::cout << " " << *it << "\n";
 	}
+
+	//checking "at" element access
+	ft::vector<int> myvector (10);   // 10 zero-initialized ints
+
+//   assign some values:
+  for (size_t i = 0; i< myvector.size(); i++) {
+	myvector.at(i) = i;
+  }
 	
+	std::cout << "myvector contains:";
+	for (size_t i = 0; i < myvector.size(); i++) {
+		std::cout << ' ' << myvector.at(i);
+	}
+	std::cout << '\n';
+	
+	ft::vector<int> myvector1 (5);
+
+	int* p = myvector1.data();
+
+	*p = 10;
+	++p;
+	*p = 20;
+	p[2] = 100;
+
+	std::cout << "myvector1 contains:";
+	for (unsigned i=0; i<myvector1.size(); ++i)
+		std::cout << ' ' << myvector1[i];
+	std::cout << '\n';
 }
+

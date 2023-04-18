@@ -6,7 +6,7 @@
 /*   By: uisroilo <uisroilo@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:32:17 by uisroilo          #+#    #+#             */
-/*   Updated: 2023/04/18 14:31:55 by uisroilo         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:28:41 by uisroilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <memory>
 # include <vector>
 # include <iostream>
+# include <stdexcept> // for std::out_of_range
 # include "utils/type_traits.hpp"
 # include "utils/reverse_iterator.hpp"
 # include "utils/const_reverse_iterator.hpp"
@@ -232,6 +233,34 @@ namespace ft {
 		reference operator[](size_type pos) {
 			return *(_start + pos);
 		}
+
+		const_reference operator[](size_type pos) const {
+			return *(_start + pos);
+		}
+		
+		reference at(size_type pos) {
+			if (pos >= size()) {
+				throw std::out_of_range("vector");
+			}
+			return *(_start + pos);
+		}
+		
+		const_reference at(size_type pos) const {
+			if (pos >= size()) {
+				throw std::out_of_range("vector");
+			}
+			return _start[pos];
+		}
+		
+		value_type* data() {
+			return _start;
+		}
+
+		const value_type* data() const {
+			return _start;
+		}
+		
+
 
 		// Modifiers:
 		void	clear() {
