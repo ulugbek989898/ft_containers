@@ -61,6 +61,13 @@
 		"type_traits": "cpp",
 		"typeinfo": "cpp",
 		"utility": "cpp",
-		"__cxx_version": "cpp"
+		"__cxx_version": "cpp",
+		"__tree": "cpp",
+		"deque": "cpp",
+		"list": "cpp",
+		"map": "cpp",
+		"queue": "cpp",
+		"set": "cpp",
+		"stack": "cpp"
 	}
 }
