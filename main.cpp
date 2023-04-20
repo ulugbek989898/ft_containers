@@ -6,7 +6,7 @@
 /*   By: uisroilo <uisroilo@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:50:28 by uisroilo          #+#    #+#             */
-/*   Updated: 2023/04/19 15:28:23 by uisroilo         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:16:51 by uisroilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,38 @@ int	main() {
 	std::cout << "myvector98 contains:";
 	for (size_t i=0; i<myvector98.size(); ++i)
 	std::cout << ' ' << myvector98[i];
+	std::cout << '\n';
+
+
+	std::vector<int> foo98 (3,100);   // three ints with a value of 100
+	std::vector<int> bar98 (5,200);   // five ints with a value of 200
+
+	foo98.swap(bar98);
+
+	std::cout << "foo98 contains:";
+	for (unsigned i=0; i<foo98.size(); i++)
+		std::cout << ' ' << foo98[i];
+	std::cout << '\n';
+
+	std::cout << "bar98 contains:";
+	for (unsigned i=0; i<bar98.size(); i++)
+		std::cout << ' ' << bar98[i];
+	std::cout << '\n';
+
+	ft::vector<int> foo1234 (3,100);   // three ints with a value of 100
+	ft::vector<int> bar1234 (5,200);   // five ints with a value of 200
+
+	foo1234.swap(bar1234);
+
+	std::cout << "foo1234 contains:";
+	// std::cout << foo1234.size() << "\n";
+	for (ft::vector<int>::iterator it = foo1234.begin(); it!=foo1234.end(); ++it)
+		std::cout << ' ' << *it;
+	std::cout << '\n';
+
+	std::cout << "bar1234 contains:";
+	for (ft::vector<int>::iterator it = bar1234.begin(); it!=bar1234.end(); ++it)
+		std::cout << ' ' << *it;
 	std::cout << '\n';
 	return 0;
 }
