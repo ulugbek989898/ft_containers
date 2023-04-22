@@ -6,12 +6,16 @@
 /*   By: uisroilo <uisroilo@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:50:28 by uisroilo          #+#    #+#             */
-/*   Updated: 2023/04/19 17:16:51 by uisroilo         ###   ########.fr       */
+/*   Updated: 2023/04/22 13:07:18 by uisroilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.hpp"
 #include <iostream>
+
+#include <iterator>
+
+#include <typeinfo> 
 
 int	main() {
 	// fill constructor
@@ -41,10 +45,16 @@ int	main() {
 		std::cout << " " << *it << "\n";
 	}
 	
-	ft::vector<int> v66(10, 10);
-	for (ft::vector<int>::iterator it = v66.begin(); it != v66.end(); ++it) {
-		std::cout << " " << *it << "\n";
+	ft::vector<int> v66(10);
+	for (int i = 0; i < 10; i++) {
+		v66.at(i) = i + 1;
 	}
+	ft::vector<int>::reverse_iterator it = v66.rbegin();
+	std::cout << "res -> " << *it << "\n";
+	// for (ft::vector<int>::reverse_iterator it = v66.rbegin(); it != v66.rend(); ++it) {
+	// 	std::cout << " " << *it;
+	// 	// std::cout << "hello" << std::endl;
+	// }
 
 	//checking "at" element access
 	ft::vector<int> myvector (10);   // 10 zero-initialized ints
@@ -187,5 +197,93 @@ int	main() {
 	for (ft::vector<int>::iterator it = bar1234.begin(); it!=bar1234.end(); ++it)
 		std::cout << ' ' << *it;
 	std::cout << '\n';
+
+	ft::vector<int> myvector28 (3,100);
+	ft::vector<int>::iterator ittt = myvector28.begin();
+
+	// it = myvector28.begin();
+	ittt = myvector28.insert( ittt , 200 );
+
+	myvector28.insert (ittt,2,300);
+
+	// "ittt" no longer valid, get a new one:
+	ittt = myvector28.begin();
+
+	std::vector<int> anothervector (2,400);
+	myvector28.insert(ittt+2,anothervector.begin(),anothervector.end());
+
+	int myarray [] = { 501,502,503 };
+	myvector28.insert (myvector28.begin(), myarray, myarray+3);
+
+	std::cout << "myvector28 contains:";
+	for (ittt=myvector28.begin(); ittt<myvector28.end(); ittt++)
+		std::cout << ' ' << *ittt;
+	std::cout << '\n';
+
+	std::vector<int> first;
+	std::vector<int> second;
+	std::vector<int> third;
+
+	first.assign (7,100);             // 7 ints with a value of 100
+
+	std::vector<int>::iterator tit;
+	tit=first.begin()+1;
+
+	second.assign (tit,first.end()-1); // the 5 central values of first
+
+	int myints[] = {1776,7,4};
+	third.assign (myints,myints+3);   // assigning from array.
+
+	std::cout << "Size of first: " << int (first.size()) << '\n';
+	std::cout << "Size of second: " << int (second.size()) << '\n';
+	std::cout << "Size of third: " << int (third.size()) << '\n';
+	
+	ft::vector<int> myV;
+
+	// set some values (from 1 to 10)
+	for (int i=1; i<=10; i++) myV.push_back(i);
+
+
+	// erase the first 3 elements:
+	myV.erase (myV.begin() + 5,myV.begin()+ 9);
+
+	std::cout << "myV contains:";
+	for (size_t i=0; i<myV.size(); ++i)
+	std::cout << ' ' << myV[i];
+	std::cout << '\n';
+	
+	ft::vector<std::string> vec;
+	vec.insert(vec.end() - vec.size(), "I admire your courage but I don't admire your singing ability.");
+
+	ft::vector<int> foo1222(3, 15);
+	ft::vector<int> bar1222(5, 42);
+	
+	ft::vector<int>::const_iterator it_foo = foo1222.begin();
+	ft::vector<int>::const_iterator it_bar = bar1222.begin();
+
+	
+	std::cout << "BEFORE SWAP" << std::endl;
+
+	std::cout << "foo1222 contains:" << std::endl;
+	// printSize(foo1222);
+	std::cout << "bar1222 contains:" << std::endl;
+	// printSize(bar1222);
+
+	foo1222.swap(bar1222);
+
+	std::cout << "AFTER SWAP" << std::endl;
+
+	std::cout << "foo1222 contains:" << std::endl;
+	// printSize(foo1222);
+	std::cout << "bar1222 contains:" << std::endl;
+	// printSize(bar1222);
+
+	std::cout << "Iterator validity:" << std::endl;
+	std::cout << (it_foo == bar1222.begin()) << std::endl;
+	std::cout << (it_bar == foo1222.begin()) << std::endl;
+
+	typedef ft::iterator_traits<const std::string *> traits;
+	if (typeid(traits::iterator_category)==typeid(ft::random_access_iterator_tag))
+		std::cout << "int* is a random-access iterator";
 	return 0;
 }
