@@ -6,7 +6,7 @@
 /*   By: uisroilo <uisroilo@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:32:17 by uisroilo          #+#    #+#             */
-/*   Updated: 2023/04/22 14:54:15 by uisroilo         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:44:25 by uisroilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,6 +335,7 @@ namespace ft {
 			size_type pos_len = &(*position) - _start;
 			if (size_type(_end_capacity - _end) >= this->size() + 1)
 			{
+				std::cout << "hola\n";
 				for (size_type i = 0; i < pos_len; i++)
 					_alloc.construct(_end - i, *(_end - i - 1));
 				_end++;
@@ -373,10 +374,6 @@ namespace ft {
 	void insert (iterator position, InputIterator first, InputIterator last,
 				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0)
 			{
-				// bool is_valid;
-				// if (!(is_valid = ft::is_ft_iterator_tagged<typename ft::iterator_traits<InputIterator>::iterator_category >::value))
-				// 	throw (ft::InvalidIteratorException<typename ft::is_ft_iterator_tagged<typename ft::iterator_traits<InputIterator>::iterator_category >::type>());
-				
 				size_type dist = ft::distance(first, last);
 				if (size_type(_end_capacity - _end) >= dist)
 				{

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main_vector.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uisroilo <uisroilo@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:50:28 by uisroilo          #+#    #+#             */
-/*   Updated: 2023/04/22 13:07:18 by uisroilo         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:40:28 by uisroilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,6 +284,29 @@ int	main() {
 
 	typedef ft::iterator_traits<const std::string *> traits;
 	if (typeid(traits::iterator_category)==typeid(ft::random_access_iterator_tag))
-		std::cout << "int* is a random-access iterator";
+		std::cout << "int* is a random-access iterator\n";
+	
+	std::vector<int> aa(10);
+	for (std::vector<int>::iterator it = aa.begin(); it != aa.end(); ++it)
+	{
+		std::cout << " " << *it;
+	}
+	std::cout << "\n";
+
+	aa.reserve(15);
+	std::cout << "capacity aa=" << aa.capacity() << "\n";
+	for (std::vector<int>::iterator it = aa.begin(); it != aa.end(); ++it)
+	{
+		std::cout << " " << *it;
+	}
+	std::cout << "\n";
+	std::cout << "capacity aa1=" << aa.capacity() << "\n";
+	aa.insert(aa.begin() + 3, 12);
+	std::cout << "capacity aa2=" << aa.capacity() << "\n";
+	for (std::vector<int>::iterator it = aa.begin(); it != aa.end(); ++it)
+	{
+		std::cout << " " << *it;
+	}
+	std::cout << "\n";
 	return 0;
 }
